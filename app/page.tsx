@@ -19,7 +19,7 @@ export default async function Home() {
     },
   });
 
-  if (!session.data?.user) redirect("/");
+  if (!session.data?.user) redirect("/auth");
   
 
   const onboardingState = await getOnboardingState();
