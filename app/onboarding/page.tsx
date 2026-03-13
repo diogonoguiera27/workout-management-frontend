@@ -12,9 +12,8 @@ export default async function OnboardingPage() {
     },
   });
 
-  if (!session.data?.user) {
-    redirect("/auth");
-  }
+  if (!session.data?.user) redirect("/");
+  
 
   const onboardingState = await getOnboardingState();
 

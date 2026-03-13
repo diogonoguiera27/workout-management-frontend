@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import {
   Anton,
   Geist,
@@ -52,7 +53,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${interTight.variable} ${anton.variable} ${plusJakartaSans.variable} antialiased`}
       >
-        <ChatProvider>{children}</ChatProvider>
+        <Suspense fallback={children}>
+          <ChatProvider>{children}</ChatProvider>
+        </Suspense>
       </body>
     </html>
   );
