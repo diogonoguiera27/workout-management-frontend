@@ -39,7 +39,7 @@ const AuthPage = () => {
 
   if (isPending) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-background px-4">
+      <main className="flex min-h-[100dvh] items-center justify-center bg-black px-4 md:bg-background">
         <p className="text-sm text-muted-foreground">Carregando sessao...</p>
       </main>
     );
@@ -50,8 +50,8 @@ const AuthPage = () => {
   }
 
   return (
-    <main className="flex min-h-screen justify-center bg-background">
-      <section className="relative flex min-h-screen w-full max-w-[402px] flex-col overflow-hidden">
+    <main className="flex min-h-[100dvh] w-full bg-black md:justify-center md:bg-background">
+      <section className="relative flex min-h-[100dvh] w-screen max-w-none flex-col overflow-hidden md:min-h-[100svh] md:max-w-[402px]">
         <Image
           src="/auth/login-background.png"
           alt="Plano de fundo da tela de login"
@@ -65,14 +65,14 @@ const AuthPage = () => {
           alt="Logo FIT.AI"
           width={85}
           height={38}
-          className="absolute left-1/2 top-12 -translate-x-1/2"
+          className="absolute left-1/2 top-8 z-10 -translate-x-1/2 md:top-12"
           priority
         />
 
-        <div className="relative mt-auto flex flex-col items-center gap-[60px] rounded-t-[20px] bg-primary px-5 pt-12 pb-10">
+        <div className="relative mt-auto flex min-h-[28svh] flex-col items-center justify-between gap-8 rounded-t-[20px] bg-primary px-5 pb-[max(2.25rem,calc(env(safe-area-inset-bottom)+1rem))] pt-8 md:min-h-0 md:gap-10 md:px-5 md:pt-12">
           <div className="flex w-full flex-col items-center gap-6">
             <div className="flex w-full flex-col gap-3 text-center">
-              <p className="font-heading text-[32px] leading-[1.05] font-semibold text-primary-foreground">
+              <p className="font-heading text-[clamp(1.9rem,8vw,2rem)] leading-[1.05] font-semibold text-primary-foreground">
                 O app que vai transformar a forma como voce treina.
               </p>
             </div>
@@ -81,7 +81,7 @@ const AuthPage = () => {
               type="button"
               onClick={handleGoogleSignIn}
               disabled={isSigningIn}
-              className="h-[38px] rounded-full bg-primary-foreground px-6 text-sm font-semibold text-foreground hover:bg-primary-foreground/90"
+              className="h-11 w-full rounded-full bg-primary-foreground px-5 text-sm font-semibold text-foreground hover:bg-primary-foreground/90 md:h-[38px] md:w-auto md:max-w-none md:px-6"
             >
               <Image
                 src="/auth/google-icon.svg"
@@ -90,7 +90,7 @@ const AuthPage = () => {
                 height={16}
                 aria-hidden
               />
-              Fazer login com o Google
+              <span className="truncate">Fazer login com o Google</span>
             </Button>
 
             {errorMessage ? (
@@ -100,7 +100,7 @@ const AuthPage = () => {
             ) : null}
           </div>
 
-          <p className="text-xs leading-[1.4] text-primary-foreground/70">
+          <p className="w-full px-2 text-center text-xs leading-[1.4] text-primary-foreground/70">
             ©2026 Copyright FIT.AI. Todos os direitos reservados
           </p>
         </div>
